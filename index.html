@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="bg-black text-white flex justify-between items-center px-8 py-4">
+    <div class="text-xl font-bold">Your Name</div>
+    <ul class="flex space-x-6">
+      <li><a href="#case-studies">Case Studies</a></li>
+      <li><a href="#recent-work">Recent Work</a></li>
+      <li><a href="#contact">Get in Touch</a></li>
+      <li><a href="https://your-resume-link.com" target="_blank" class="text-green-500">Resume</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="bg-black text-white text-center py-20 px-4">
+    <img src="https://via.placeholder.com/150" class="mx-auto rounded-full mb-6" alt="Your photo">
+    <h1 class="text-4xl font-bold mb-4">Your Name Here</h1>
+    <p class="mb-6">Short headline or intro about what you do and offer.</p>
+    <a href="#contact" class="bg-green-500 px-6 py-3 rounded font-semibold text-black">Let's get started</a>
+  </section>
+
+  <!-- Case Studies -->
+  <section id="case-studies" class="py-16 px-4 max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-10">Case Studies</h2>
+    <div class="grid md:grid-cols-2 gap-10">
+      <!-- Project 1 -->
+      <div>
+        <img src="https://via.placeholder.com/400x250" alt="" class="mb-4 rounded">
+        <h3 class="text-xl font-bold">Project 1 Name</h3>
+        <p class="mb-4">Short description about the work done in this project.</p>
+        <a href="#" class="text-orange-500 underline">View case study →</a>
+      </div>
+      <!-- Project 2 -->
+      <div>
+        <img src="https://via.placeholder.com/400x250" alt="" class="mb-4 rounded">
+        <h3 class="text-xl font-bold">Project 2 Name</h3>
+        <p class="mb-4">Short description about the work done in this project.</p>
+        <a href="#" class="text-blue-500 underline">View case study →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resume Section -->
+  <section class="bg-black text-white py-20 px-4 text-center">
+    <h2 class="text-3xl font-bold mb-6">Want to Learn More?</h2>
+    <p class="mb-6">View my resume to see my experience and qualifications.</p>
+    <a href="https://your-google-drive-resume-link.com" target="_blank" class="bg-green-500 text-black px-6 py-3 rounded font-semibold">View Resume</a>
+  </section>
+
+  <!-- Recent Work -->
+  <section id="recent-work" class="py-16 px-4 max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-10">Recent Work</h2>
+    <div class="grid md:grid-cols-2 gap-10">
+      <!-- Work 1 -->
+      <div>
+        <img src="https://via.placeholder.com/400x250" class="rounded mb-4" alt="">
+        <h3 class="text-xl font-bold">Recent Work 1</h3>
+        <p class="mb-4">Small description about this work.</p>
+        <a href="#" class="text-green-500 underline">View more →</a>
+      </div>
+      <!-- Work 2 -->
+      <div>
+        <img src="https://via.placeholder.com/400x250" class="rounded mb-4" alt="">
+        <h3 class="text-xl font-bold">Recent Work 2</h3>
+        <p class="mb-4">Small description about this work.</p>
+        <a href="#" class="text-green-500 underline">View more →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="bg-black text-white py-20 px-4 text-center">
+    <h2 class="text-3xl font-bold mb-6">Get In Touch</h2>
+    <p class="mb-6">Have a project or just want to say hi? Fill in the form below!</p>
+    <form class="max-w-xl mx-auto">
+      <input type="text" placeholder="Name" class="w-full mb-4 px-4 py-2 rounded" />
+      <input type="email" placeholder="Email" class="w-full mb-4 px-4 py-2 rounded" />
+      <textarea placeholder="Message" class="w-full mb-4 px-4 py-2 rounded"></textarea>
+      <button type="submit" class="bg-green-500 text-black px-6 py-3 rounded font-semibold">Submit</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black text-white py-6 text-center">
+    <p>Made with ❤️</p>
+  </footer>
+</body>
+</html>
