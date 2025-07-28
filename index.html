@@ -206,6 +206,34 @@
       margin-top: auto;
     }
 
+    /* New styles for profile section */
+    .profile-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .profile-section {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    .profile-photo {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #64ffda;
+      box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
+    }
+
+    .profile-content {
+      flex: 1;
+    }
+
     @media (min-width: 768px) {
       nav {
         justify-content: flex-start;
@@ -236,9 +264,14 @@
   <section id="home" class="active">
     <div class="container">
       <div class="typing animate">Welcome to My Portfolio</div>
-      <p>Hello! I'm Kishore, a passionate tech enthusiast specializing in Data Analytics and Digital Marketing.</p>
-      <p>Currently pursuing my Integrated MCA, I'm focused on building practical skills through projects and continuous learning.</p>
-      <a href="#projects" class="btn" onclick="showTab('projects')"><span>View My Work</span></a>
+      <div class="profile-section">
+        <img src="https://via.placeholder.com/200" alt="Kishore M Madhu" class="profile-photo">
+        <div class="profile-content">
+          <p>Hello! I'm Kishore, a passionate tech enthusiast specializing in Data Analytics and Digital Marketing.</p>
+          <p>Currently pursuing my Integrated MCA, I'm focused on building practical skills through projects and continuous learning.</p>
+          <a href="#" class="btn" onclick="showTab('projects'); return false;"><span>View My Work</span></a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -356,7 +389,7 @@
       
       // Trigger typing animation for the section heading
       const heading = document.querySelector(`#${id} .typing`);
-      if (heading && !heading.classList.contains('animate')) {
+      if (heading) {
         heading.classList.add('animate');
         // Reset animation by briefly removing and re-adding the class
         setTimeout(() => {
@@ -367,6 +400,9 @@
       
       // Update URL hash
       window.location.hash = id;
+      
+      // Scroll to top of the section
+      window.scrollTo(0, 0);
     }
     
     // Check URL hash on page load
