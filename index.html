@@ -4,28 +4,94 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kishore M Madhu | Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Typing animation styles */
-    .typing-container {
-      width: 100%;
-      text-align: center;
-      margin: 1.5rem auto;
-      max-width: 700px;
-      padding: 0 1rem;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    
-    .typing-text {
-      display: inline-block;
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0a192f;
+      color: #ccd6f6;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav {
+      background-color: #112240;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav button {
+      background: none;
+      color: #64ffda;
+      border: 2px solid #64ffda;
+      padding: 0.6rem 1.2rem;
+      margin: 0 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      border-radius: 5px;
+    }
+
+    nav button:hover {
+      background-color: #64ffda;
+      color: #0a192f;
+    }
+
+    nav button.active {
+      background-color: #64ffda;
+      color: #0a192f;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      display: none;
+      flex-grow: 1;
+    }
+
+    section.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .typing {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #64ffda;
+      margin-bottom: 1.5rem;
       overflow: hidden;
-      border-right: 2px solid #818cf8;
       white-space: nowrap;
-      animation: 
-        typing 3s steps(30, end),
-        blink 0.75s step-end infinite;
-      width: 0;
+      border-right: 2px solid #64ffda;
+      width: fit-content;
       max-width: 100%;
+    }
+
+    .typing.animate {
+      animation: 
+        typing 2s steps(30, end),
+        blink 0.75s step-end infinite;
     }
 
     @keyframes typing {
@@ -35,452 +101,290 @@
 
     @keyframes blink {
       from, to { border-color: transparent }
-      50% { border-color: #818cf8 }
+      50% { border-color: #64ffda }
     }
 
-    /* Tab system */
-    .tab-content {
-      display: none;
-      animation: fadeIn 0.5s ease;
-    }
-    
-    .tab-content.active {
-      display: block;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    /* Button styles */
-    .nav-btn {
-      position: relative;
+    .btn {
+      margin-top: 1rem;
       display: inline-block;
+      border: 2px solid #64ffda;
+      color: #64ffda;
       padding: 0.75rem 1.5rem;
-      font-weight: 500;
-      color: white;
-      background-color: #4f46e5;
-      border-radius: 0.5rem;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+      position: relative;
+      overflow: hidden;
+      border-radius: 5px;
+      font-weight: 600;
     }
-    
-    .nav-btn:hover {
-      background-color: #4338ca;
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #64ffda;
+      z-index: 0;
+      transition: transform 0.3s ease-in-out;
+      transform: scaleX(0);
+      transform-origin: left;
     }
-    
-    .nav-btn.active {
-      background-color: #3730a3;
+
+    .btn:hover::before {
+      transform: scaleX(1);
     }
-    
-    /* Project cards */
+
+    .btn span {
+      position: relative;
+      z-index: 1;
+      color: #0a192f;
+    }
+
+    .contact-links a {
+      display: block;
+      margin: 1rem 0;
+      font-size: 1.1rem;
+      color: #64ffda;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      padding: 0.5rem 0;
+    }
+
+    .contact-links a:hover {
+      color: #8892b0;
+    }
+
+    .project-grid {
+      display: grid;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
     .project-card {
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background-color: #112240;
+      padding: 1.5rem;
+      border-radius: 5px;
+      transition: transform 0.3s ease;
+      border: 1px solid #1f2d4a;
     }
-    
+
     .project-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+      border-color: #64ffda;
+    }
+
+    .project-card h3 {
+      color: #64ffda;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card p {
+      margin-bottom: 1rem;
+    }
+
+    .project-card .tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .project-card .tech span {
+      background-color: #1f2d4a;
+      color: #64ffda;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    footer {
+      background-color: #112240;
+      padding: 1rem;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    @media (min-width: 768px) {
+      nav {
+        justify-content: flex-start;
+      }
+      
+      .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .project-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
   </style>
 </head>
-<body class="bg-gray-900 text-white font-sans min-h-screen flex flex-col">
-
-  <!-- Header with typing animation -->
-  <header class="text-center py-6 bg-gray-800 shadow-lg sticky top-0 z-50">
-    <div class="container mx-auto px-4">
-      <h1 class="text-3xl font-bold">Kishore M Madhu</h1>
-      <div class="typing-container">
-        <p class="typing-text text-indigo-400 text-xl">Aspiring Data Analyst | Digital Marketer | AI Enthusiast</p>
-      </div>
-    </div>
-  </header>
-
-  <!-- Navigation tabs -->
-  <nav class="flex justify-center gap-4 py-4 bg-gray-800/50 backdrop-blur-sm sticky top-20 z-40 flex-wrap px-4">
-    <button class="nav-btn active" data-tab="home">
-      <i class="fas fa-home mr-2"></i>Home
-    </button>
-    <button class="nav-btn" data-tab="about">
-      <i class="fas fa-user mr-2"></i>About
-    </button>
-    <button class="nav-btn" data-tab="skills">
-      <i class="fas fa-code mr-2"></i>Skills
-    </button>
-    <button class="nav-btn" data-tab="projects">
-      <i class="fas fa-project-diagram mr-2"></i>Projects
-    </button>
-    <button class="nav-btn" data-tab="contact">
-      <i class="fas fa-envelope mr-2"></i>Contact
-    </button>
+<body>
+  <nav>
+    <button onclick="showTab('home')" class="active">Home</button>
+    <button onclick="showTab('about')">About</button>
+    <button onclick="showTab('projects')">Projects</button>
+    <button onclick="showTab('goals')">Goals</button>
+    <button onclick="showTab('contact')">Contact</button>
   </nav>
 
-  <!-- Main content area -->
-  <main class="container mx-auto px-4 max-w-6xl flex-grow py-8">
-    <!-- Home Tab -->
-    <section id="home" class="tab-content active">
-      <div class="flex flex-col md:flex-row items-center gap-8">
-        <div class="w-full md:w-1/3">
-          <img src="Screenshot_20250720-133152.Google.png" alt="Kishore M Madhu" 
-               class="rounded-full border-4 border-indigo-500 w-64 h-64 object-cover mx-auto shadow-lg">
-        </div>
-        <div class="w-full md:w-2/3">
-          <h2 class="text-3xl font-bold mb-4 text-indigo-400">Welcome to My Portfolio!</h2>
-          <p class="text-lg mb-6">
-            Hello! I'm Kishore, a passionate 1st year Integrated MCA student with a strong interest in 
-            <span class="text-indigo-400 font-medium">Data Analytics</span>, 
-            <span class="text-indigo-400 font-medium">Digital Marketing</span>, and 
-            <span class="text-indigo-400 font-medium">Artificial Intelligence</span>.
-          </p>
-          <p class="mb-6">
-            I'm on a journey to become a versatile tech professional who can bridge the gap between data insights 
-            and business strategy. This portfolio showcases my skills, projects, and aspirations.
-          </p>
-          <div class="flex flex-wrap gap-4">
-            <button class="nav-btn" data-tab="projects">
-              <i class="fas fa-eye mr-2"></i>View My Work
-            </button>
-            <a href="https://drive.google.com/file/d/1sp6sAbLSDox0WrK0UeSgfgKoa9Q0smHR/view?usp=sharing" 
-               target="_blank" class="nav-btn bg-transparent border border-indigo-600 hover:bg-indigo-600/20">
-              <i class="fas fa-file-alt mr-2"></i>Download Resume
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Tab -->
-    <section id="about" class="tab-content">
-      <div class="bg-gray-800 rounded-xl p-8">
-        <h2 class="text-3xl font-bold mb-6 text-indigo-400">About Me</h2>
-        
-        <div class="grid md:grid-cols-2 gap-8">
-          <div>
-            <h3 class="text-xl font-semibold mb-4 text-indigo-300">My Journey</h3>
-            <p class="mb-4">
-              I'm currently pursuing my 1st year in Integrated MCA at De Paul Institute of Science & Technology (DIST), 
-              affiliated with MG University. My academic journey has fueled my passion for technology and data-driven decision making.
-            </p>
-            <p>
-              Beyond academics, I'm actively building hands-on experience through certified courses, personal projects, 
-              and continuous self-learning in the fields of data analytics and digital marketing.
-            </p>
-          </div>
-          
-          <div>
-            <h3 class="text-xl font-semibold mb-4 text-indigo-300">My Approach</h3>
-            <p class="mb-4">
-              I believe in a <span class="text-indigo-400 font-medium">project-based learning</span> approach, where theoretical knowledge is 
-              immediately applied to practical, real-world scenarios.
-            </p>
-            <p>
-              My goal is to develop a <span class="text-indigo-400 font-medium">T-shaped skill set</span> - deep expertise in data analytics 
-              with broad knowledge across related domains like marketing and AI.
-            </p>
-          </div>
-        </div>
-        
-        <div class="mt-8">
-          <h3 class="text-xl font-semibold mb-4 text-indigo-300">Currently Learning</h3>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="bg-gray-700/50 p-4 rounded-lg text-center">
-              <i class="fas fa-database text-2xl mb-2 text-indigo-400"></i>
-              <p>SQL & NoSQL</p>
-            </div>
-            <div class="bg-gray-700/50 p-4 rounded-lg text-center">
-              <i class="fab fa-python text-2xl mb-2 text-indigo-400"></i>
-              <p>Python for Data</p>
-            </div>
-            <div class="bg-gray-700/50 p-4 rounded-lg text-center">
-              <i class="fas fa-chart-line text-2xl mb-2 text-indigo-400"></i>
-              <p>Power BI/Tableau</p>
-            </div>
-            <div class="bg-gray-700/50 p-4 rounded-lg text-center">
-              <i class="fas fa-brain text-2xl mb-2 text-indigo-400"></i>
-              <p>AI Fundamentals</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills Tab -->
-    <section id="skills" class="tab-content">
-      <div class="bg-gray-800 rounded-xl p-8">
-        <h2 class="text-3xl font-bold mb-6 text-indigo-400">My Skills</h2>
-        
-        <div class="grid md:grid-cols-2 gap-8">
-          <div>
-            <h3 class="text-xl font-semibold mb-4 text-indigo-300">Technical Skills</h3>
-            
-            <div class="space-y-4">
-              <div>
-                <div class="flex justify-between mb-1">
-                  <span>Python Programming</span>
-                  <span>80%</span>
-                </div>
-                <div class="w-full bg-gray-700 rounded-full h-2">
-                  <div class="bg-indigo-600 h-2 rounded-full" style="width: 80%"></div>
-                </div>
-              </div>
-              
-              <div>
-                <div class="flex justify-between mb-1">
-                  <span>Data Analysis</span>
-                  <span>75%</span>
-                </div>
-                <div class="w-full bg-gray-700 rounded-full h-2">
-                  <div class="bg-indigo-600 h-2 rounded-full" style="width: 75%"></div>
-                </div>
-              </div>
-              
-              <div>
-                <div class="flex justify-between mb-1">
-                  <span>SQL</span>
-                  <span>70%</span>
-                </div>
-                <div class="w-full bg-gray-700 rounded-full h-2">
-                  <div class="bg-indigo-600 h-2 rounded-full" style="width: 70%"></div>
-                </div>
-              </div>
-              
-              <div>
-                <div class="flex justify-between mb-1">
-                  <span>Power BI/Tableau</span>
-                  <span>65%</span>
-                </div>
-                <div class="w-full bg-gray-700 rounded-full h-2">
-                  <div class="bg-indigo-600 h-2 rounded-full" style="width: 65%"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div>
-            <h3 class="text-xl font-semibold mb-4 text-indigo-300">Digital Marketing</h3>
-            
-            <div class="space-y-4">
-              <div>
-                <div class="flex justify-between mb-1">
-                  <span>SEO</span>
-                  <span>70%</span>
-                </div>
-                <div class="w-full bg-gray-700 rounded-full h-2">
-                  <div class="bg-indigo-600 h-2 rounded-full" style="width: 70%"></div>
-                </div>
-              </div>
-              
-              <div>
-                <div class="flex justify-between mb-1">
-                  <span>Google Analytics</span>
-                  <span>75%</span>
-                </div>
-                <div class="w-full bg-gray-700 rounded-full h-2">
-                  <div class="bg-indigo-600 h-2 rounded-full" style="width: 75%"></div>
-                </div>
-              </div>
-              
-              <div>
-                <div class="flex justify-between mb-1">
-                  <span>Social Media Marketing</span>
-                  <span>65%</span>
-                </div>
-                <div class="w-full bg-gray-700 rounded-full h-2">
-                  <div class="bg-indigo-600 h-2 rounded-full" style="width: 65%"></div>
-                </div>
-              </div>
-              
-              <div>
-                <div class="flex justify-between mb-1">
-                  <span>Content Creation</span>
-                  <span>80%</span>
-                </div>
-                <div class="w-full bg-gray-700 rounded-full h-2">
-                  <div class="bg-indigo-600 h-2 rounded-full" style="width: 80%"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="mt-8">
-          <h3 class="text-xl font-semibold mb-4 text-indigo-300">Other Skills</h3>
-          <div class="flex flex-wrap gap-3">
-            <span class="bg-indigo-600/20 px-3 py-1 rounded-full text-sm">Git & GitHub</span>
-            <span class="bg-indigo-600/20 px-3 py-1 rounded-full text-sm">Excel</span>
-            <span class="bg-indigo-600/20 px-3 py-1 rounded-full text-sm">VS Code</span>
-            <span class="bg-indigo-600/20 px-3 py-1 rounded-full text-sm">Canva</span>
-            <span class="bg-indigo-600/20 px-3 py-1 rounded-full text-sm">Linux</span>
-            <span class="bg-indigo-600/20 px-3 py-1 rounded-full text-sm">Problem Solving</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Tab -->
-    <section id="projects" class="tab-content">
-      <h2 class="text-3xl font-bold mb-8 text-indigo-400">My Projects</h2>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Project 1 -->
-        <div class="project-card bg-gray-800 rounded-xl overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
-               alt="Data Dashboard" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-2">Sales Analytics Dashboard</h3>
-            <p class="text-gray-300 mb-4">Interactive Power BI dashboard analyzing sales trends and customer behavior.</p>
-            <div class="flex justify-between items-center">
-              <span class="text-sm text-indigo-400">Power BI, Excel</span>
-              <a href="#" class="text-indigo-400 hover:underline">View →</a>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Project 2 -->
-        <div class="project-card bg-gray-800 rounded-xl overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" 
-               alt="AI Project" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-2">Movie Recommendation System</h3>
-            <p class="text-gray-300 mb-4">Basic recommendation engine using Python and collaborative filtering.</p>
-            <div class="flex justify-between items-center">
-              <span class="text-sm text-indigo-400">Python, Pandas</span>
-              <a href="#" class="text-indigo-400 hover:underline">View →</a>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Project 3 -->
-        <div class="project-card bg-gray-800 rounded-xl overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
-               alt="Marketing Project" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-2">E-commerce SEO Strategy</h3>
-            <p class="text-gray-300 mb-4">Comprehensive SEO plan with keyword research and content strategy.</p>
-            <div class="flex justify-between items-center">
-              <span class="text-sm text-indigo-400">SEO, Google Analytics</span>
-              <a href="#" class="text-indigo-400 hover:underline">View →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="mt-8 text-center">
-        <button class="nav-btn">
-          <i class="fas fa-plus mr-2"></i>View All Projects
-        </button>
-      </div>
-    </section>
-
-    <!-- Contact Tab -->
-    <section id="contact" class="tab-content">
-      <div class="bg-gray-800 rounded-xl p-8">
-        <h2 class="text-3xl font-bold mb-6 text-indigo-400">Get In Touch</h2>
-        
-        <div class="grid md:grid-cols-2 gap-8">
-          <div>
-            <h3 class="text-xl font-semibold mb-4 text-indigo-300">Contact Information</h3>
-            
-            <div class="space-y-4">
-              <div class="flex items-center">
-                <i class="fas fa-envelope text-indigo-400 mr-4 text-xl"></i>
-                <a href="mailto:kishoremmadhu@gmail.com" class="hover:text-indigo-400">kishoremmadhu@gmail.com</a>
-              </div>
-              
-              <div class="flex items-center">
-                <i class="fab fa-linkedin text-indigo-400 mr-4 text-xl"></i>
-                <a href="https://linkedin.com/in/kishore-m-madhu-975832373" target="_blank" class="hover:text-indigo-400">linkedin.com/in/kishore-m-madhu</a>
-              </div>
-              
-              <div class="flex items-center">
-                <i class="fab fa-github text-indigo-400 mr-4 text-xl"></i>
-                <a href="https://github.com/kishoremmadhu" target="_blank" class="hover:text-indigo-400">github.com/kishoremmadhu</a>
-              </div>
-            </div>
-            
-            <div class="mt-8">
-              <h3 class="text-xl font-semibold mb-4 text-indigo-300">My Goals</h3>
-              <ul class="list-disc pl-5 space-y-2">
-                <li>Master Data Analytics and Digital Marketing</li>
-                <li>Get certified in AI & ML</li>
-                <li>Build real-world applications</li>
-                <li>Contribute to open-source projects</li>
-                <li>Develop a strong professional network</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div>
-            <h3 class="text-xl font-semibold mb-4 text-indigo-300">Send Me a Message</h3>
-            <form class="space-y-4">
-              <div>
-                <label for="name" class="block mb-2">Your Name</label>
-                <input type="text" id="name" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500">
-              </div>
-              
-              <div>
-                <label for="email" class="block mb-2">Your Email</label>
-                <input type="email" id="email" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500">
-              </div>
-              
-              <div>
-                <label for="message" class="block mb-2">Your Message</label>
-                <textarea id="message" rows="4" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
-              </div>
-              
-              <button type="submit" class="nav-btn w-full">
-                <i class="fas fa-paper-plane mr-2"></i>Send Message
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="mt-12 py-6 bg-gray-800 text-center">
-    <div class="container mx-auto px-4">
-      <div class="flex justify-center space-x-6 mb-4">
-        <a href="https://github.com/kishoremmadhu" target="_blank" class="text-gray-400 hover:text-indigo-400 text-xl">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://linkedin.com/in/kishore-m-madhu-975832373" target="_blank" class="text-gray-400 hover:text-indigo-400 text-xl">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="mailto:kishoremmadhu@gmail.com" class="text-gray-400 hover:text-indigo-400 text-xl">
-          <i class="fas fa-envelope"></i>
-        </a>
-      </div>
-      <p class="text-gray-400 text-sm">
-        &copy; 2025 Kishore M Madhu. All rights reserved.
-      </p>
+  <!-- Home Section -->
+  <section id="home" class="active">
+    <div class="container">
+      <div class="typing animate">Welcome to My Portfolio</div>
+      <p>Hello! I'm Kishore, a passionate tech enthusiast specializing in Data Analytics and Digital Marketing.</p>
+      <p>Currently pursuing my Integrated MCA, I'm focused on building practical skills through projects and continuous learning.</p>
+      <a href="#projects" class="btn" onclick="showTab('projects')"><span>View My Work</span></a>
     </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <div class="typing">About Me</div>
+      <p>I'm a first-year Integrated MCA student at De Paul Institute of Science & Technology (DIST), affiliated with MG University.</p>
+      <p>My primary interests lie in Data Analytics and Digital Marketing, where I'm actively building hands-on experience through:</p>
+      <ul style="margin: 1rem 0 1rem 2rem;">
+        <li>Certified courses and online learning</li>
+        <li>Real-world projects and case studies</li>
+        <li>Continuous self-improvement</li>
+      </ul>
+      <p>My goal is to become a versatile tech professional capable of solving real-world problems through data-driven insights and strategic marketing.</p>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <div class="typing">My Projects</div>
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>Sales Analytics Dashboard</h3>
+          <p>Interactive Power BI dashboard analyzing sales trends and customer behavior patterns.</p>
+          <div class="tech">
+            <span>Power BI</span>
+            <span>Excel</span>
+            <span>Data Visualization</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <h3>Movie Recommendation System</h3>
+          <p>Basic recommendation engine using Python and collaborative filtering techniques.</p>
+          <div class="tech">
+            <span>Python</span>
+            <span>Pandas</span>
+            <span>Machine Learning</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <h3>E-commerce SEO Strategy</h3>
+          <p>Comprehensive SEO plan with keyword research and content optimization.</p>
+          <div class="tech">
+            <span>SEO</span>
+            <span>Google Analytics</span>
+            <span>Content Strategy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Goals Section -->
+  <section id="goals">
+    <div class="container">
+      <div class="typing">My Goals</div>
+      <p>👨‍🎓 Currently pursuing an integrated MCA with a strong interest in Data Analytics and Machine Learning.</p>
+      <p>💡 Building foundational skills in AI, ML, digital marketing, and cybersecurity to become a versatile tech professional.</p>
+      <p>🎯 Long-term goal: contribute to real-world AI applications in business, education, and sustainability.</p>
+      <div style="margin-top: 2rem;">
+        <h3 style="color: #64ffda; margin-bottom: 1rem;">Current Focus Areas:</h3>
+        <ul style="margin-left: 2rem;">
+          <li>Mastering Python for data analysis</li>
+          <li>Learning Power BI and Tableau</li>
+          <li>Understanding AI/ML fundamentals</li>
+          <li>Developing digital marketing strategies</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <div class="typing">Get in Touch</div>
+      <div class="contact-links">
+        <a href="mailto:kishoremmadhu@gmail.com">
+          <i class="fas fa-envelope"></i> Email: kishoremmadhu@gmail.com
+        </a>
+        <a href="https://linkedin.com/in/kishore-m-madhu-975832373" target="_blank">
+          <i class="fab fa-linkedin"></i> LinkedIn Profile
+        </a>
+        <a href="https://github.com/kishoremmadhu" target="_blank">
+          <i class="fab fa-github"></i> GitHub Projects
+        </a>
+        <a href="https://drive.google.com/file/d/1sp6sAbLSDox0WrK0UeSgfgKoa9Q0smHR/view?usp=sharing" target="_blank">
+          <i class="fas fa-file-alt"></i> View My Resume
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Kishore M Madhu. All rights reserved.</p>
   </footer>
 
-  <!-- JavaScript for tab functionality -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Get all tab buttons and content sections
-      const tabButtons = document.querySelectorAll('.nav-btn');
-      const tabContents = document.querySelectorAll('.tab-content');
+    // Tab functionality
+    function showTab(id) {
+      // Hide all sections
+      document.querySelectorAll('section').forEach(sec => {
+        sec.classList.remove('active');
+      });
       
-      // Function to switch tabs
-      function switchTab(tabId) {
-        // Remove active class from all buttons and contents
-        tabButtons.forEach(button => {
-          button.classList.remove('active');
-        });
-        
-        tabContents.forEach(content => {
-          content.classList.remove('active');
-        });
-        
-        // Add active class to clicked button and corresponding content
-        const selectedButton = document.querySelector(`.nav-btn[data-tab="${tabId}"]`);
-        const selectedContent = document.getElementById(tabId);
-        
+      // Show selected section
+      document.getElementById(id).classList.add('active');
+      
+      // Update active nav button
+      document.querySelectorAll('nav button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.querySelector(`nav button[onclick="showTab('${id}')"]`).classList.add('active');
+      
+      // Trigger typing animation for the section heading
+      const heading = document.querySelector(`#${id} .typing`);
+      if (heading && !heading.classList.contains('animate')) {
+        heading.classList.add('animate');
+        // Reset animation by briefly removing and re-adding the class
+        setTimeout(() => {
+          heading.classList.remove('animate');
+          setTimeout(() => heading.classList.add('animate'), 10);
+        }, 10);
+      }
+      
+      // Update URL hash
+      window.location.hash = id;
+    }
     
+    // Check URL hash on page load
+    window.addEventListener('load', () => {
+      if (window.location.hash) {
+        const tabId = window.location.hash.substring(1);
+        showTab(tabId);
+      } else {
+        // Default to home tab
+        showTab('home');
+      }
+    });
+    
+    // Handle back/forward navigation
+    window.addEventListener('hashchange', () => {
+      const tabId = window.location.hash.substring(1);
+      showTab(tabId);
+    });
+  </script>
+</body>
+</html>
