@@ -8,12 +8,240 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    /* 📱 Mobile-Friendly Responsive Enhancements (Safe Version) */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #0a192f;
+  color: #ccd6f6;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  background-color: #112240;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav button {
+  background: none;
+  color: #64ffda;
+  border: 2px solid #64ffda;
+  padding: 0.6rem 1.2rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+nav button:hover {
+  background-color: #64ffda;
+  color: #0a192f;
+}
+
+nav button.active {
+  background-color: #64ffda;
+  color: #0a192f;
+}
+
+section {
+  padding: 4rem 2rem;
+  display: none;
+  flex-grow: 1;
+}
+
+section.active {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.typing {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #64ffda;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.typing.animate {
+  animation: typing 2s steps(30, end);
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+.btn {
+  margin-top: 1rem;
+  display: inline-block;
+  border: 2px solid #64ffda;
+  color: #64ffda;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #64ffda;
+  z-index: 0;
+  transition: transform 0.3s ease-in-out;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.btn:hover::before {
+  transform: scaleX(1);
+}
+
+.btn span {
+  position: relative;
+  z-index: 1;
+  color: #0a192f;
+}
+
+.contact-links a {
+  display: block;
+  margin: 1rem 0;
+  font-size: 1.1rem;
+  color: #64ffda;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding: 0.5rem 0;
+}
+
+.contact-links a:hover {
+  color: #8892b0;
+}
+
+.project-grid {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  background-color: #112240;
+  padding: 1.5rem;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+  border: 1px solid #1f2d4a;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: #64ffda;
+}
+
+.project-card h3 {
+  color: #64ffda;
+  margin-bottom: 0.5rem;
+}
+
+.project-card p {
+  margin-bottom: 1rem;
+}
+
+.project-card .tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.project-card .tech span {
+  background-color: #1f2d4a;
+  color: #64ffda;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+footer {
+  background-color: #112240;
+  padding: 1rem;
+  text-align: center;
+  margin-top: auto;
+}
+
+/* Profile Section */
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.profile-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #64ffda;
+  box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
+}
+
+.profile-content {
+  flex: 1;
+}
+
+/* Responsive Layouts */
+@media (min-width: 768px) {
+  nav {
+    justify-content: flex-start;
+  }
+
+  .profile-section {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .project-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 📱 Mobile-Friendly Enhancements */
 @media (max-width: 768px) {
   body {
     padding: 0 1rem;
@@ -41,13 +269,13 @@
     gap: 1.5rem;
   }
 
-  .profile-content {
-    padding: 0 0.5rem;
-  }
-
   .profile-photo {
     width: 140px;
     height: 140px;
+  }
+
+  .profile-content {
+    padding: 0 0.5rem;
   }
 
   .project-grid {
@@ -80,193 +308,6 @@
     height: 120px;
   }
 }
-
-    section {
-      padding: 4rem 2rem;
-      display: none;
-      flex-grow: 1;
-    }
-
-    section.active {
-      display: block;
-      animation: fadeIn 0.5s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .typing {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #64ffda;
-  margin-bottom: 1.5rem;
-  overflow: hidden;
-  white-space: nowrap;
-  display: inline-block;
-  max-width: 100%;
-}
-
-.typing.animate {
-  animation: typing 2s steps(30, end);
-}
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-
-    .btn {
-      margin-top: 1rem;
-      display: inline-block;
-      border: 2px solid #64ffda;
-      color: #64ffda;
-      padding: 0.75rem 1.5rem;
-      text-decoration: none;
-      transition: all 0.3s ease-in-out;
-      position: relative;
-      overflow: hidden;
-      border-radius: 5px;
-      font-weight: 600;
-    }
-
-    .btn::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #64ffda;
-      z-index: 0;
-      transition: transform 0.3s ease-in-out;
-      transform: scaleX(0);
-      transform-origin: left;
-    }
-
-    .btn:hover::before {
-      transform: scaleX(1);
-    }
-
-    .btn span {
-      position: relative;
-      z-index: 1;
-      color: #0a192f;
-    }
-
-    .contact-links a {
-      display: block;
-      margin: 1rem 0;
-      font-size: 1.1rem;
-      color: #64ffda;
-      text-decoration: none;
-      transition: color 0.3s ease;
-      padding: 0.5rem 0;
-    }
-
-    .contact-links a:hover {
-      color: #8892b0;
-    }
-
-    .project-grid {
-      display: grid;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .project-card {
-      background-color: #112240;
-      padding: 1.5rem;
-      border-radius: 5px;
-      transition: transform 0.3s ease;
-      border: 1px solid #1f2d4a;
-    }
-
-    .project-card:hover {
-      transform: translateY(-5px);
-      border-color: #64ffda;
-    }
-
-    .project-card h3 {
-      color: #64ffda;
-      margin-bottom: 0.5rem;
-    }
-
-    .project-card p {
-      margin-bottom: 1rem;
-    }
-
-    .project-card .tech {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-
-    .project-card .tech span {
-      background-color: #1f2d4a;
-      color: #64ffda;
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-    }
-
-    footer {
-      background-color: #112240;
-      padding: 1rem;
-      text-align: center;
-      margin-top: auto;
-    }
-
-    /* New styles for profile section */
-    .profile-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-    }
-
-    @media (min-width: 768px) {
-      .profile-section {
-        flex-direction: row;
-        align-items: center;
-      }
-    }
-
-    .profile-photo {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #64ffda;
-      box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
-    }
-
-    .profile-content {
-      flex: 1;
-    }
-
-    @media (min-width: 768px) {
-      nav {
-        justify-content: flex-start;
-      }
-      
-      .project-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .project-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
   </style>
 </head>
 <body>
