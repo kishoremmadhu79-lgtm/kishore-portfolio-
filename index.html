@@ -13,47 +13,69 @@
       box-sizing: border-box;
     }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #0a192f;
-      color: #ccd6f6;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+    /* Mobile-friendly typography and layout tweaks */
+@media (max-width: 768px) {
+  body {
+    padding: 0 1rem;
+  }
 
-    nav {
-      background-color: #112240;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
 
-    nav button {
-      background: none;
-      color: #64ffda;
-      border: 2px solid #64ffda;
-      padding: 0.6rem 1.2rem;
-      margin: 0 0.5rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 600;
-      border-radius: 5px;
-    }
+  nav button {
+    padding: 0.5rem 1rem;
+    margin: 0.3rem;
+    font-size: 0.9rem;
+  }
 
-    nav button:hover {
-      background-color: #64ffda;
-      color: #0a192f;
-    }
+  .typing {
+    font-size: 1.5rem;
+  }
 
-    nav button.active {
-      background-color: #64ffda;
-      color: #0a192f;
-    }
+  .profile-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-photo {
+    width: 150px;
+    height: 150px;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-links a {
+    font-size: 1rem;
+    word-break: break-word;
+  }
+
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Ultra-small screens (phones) */
+@media (max-width: 480px) {
+  .typing {
+    font-size: 1.2rem;
+  }
+
+  nav button {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .profile-photo {
+    width: 120px;
+    height: 120px;
+  }
+}
 
     section {
       padding: 4rem 2rem;
@@ -77,31 +99,23 @@
     }
 
     .typing {
-      font-size: 2rem;
-      font-weight: 600;
-      color: #64ffda;
-      margin-bottom: 1.5rem;
-      overflow: hidden;
-      white-space: nowrap;
-      border-right: 2px solid #64ffda;
-      width: fit-content;
-      max-width: 100%;
-    }
+  font-size: 2rem;
+  font-weight: 600;
+  color: #64ffda;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  white-space: nowrap;
+  width: fit-content;
+  max-width: 100%;
+}
 
-    .typing.animate {
-      animation: 
-        typing 2s steps(30, end),
-        blink 0.75s step-end infinite;
-    }
+.typing.animate {
+  animation: typing 2s steps(30, end);
+}
 
     @keyframes typing {
       from { width: 0 }
       to { width: 100% }
-    }
-
-    @keyframes blink {
-      from, to { border-color: transparent }
-      50% { border-color: #64ffda }
     }
 
     .btn {
