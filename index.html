@@ -1,489 +1,259 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kishore M Madhu | Portfolio</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kishore Portfolio</title>
   <style>
     * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #0a192f;
-  color: #ccd6f6;
-  line-height: 1.6;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+    body {
+      background-color: #0f172a;
+      color: #f1f5f9;
+      line-height: 1.6;
+    }
 
-nav {
-  background-color: #112240;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: center;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
+    header {
+      background-color: #1e293b;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-nav button {
-  background: none;
-  color: #64ffda;
-  border: 2px solid #64ffda;
-  padding: 0.6rem 1.2rem;
-  margin: 0 0.5rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: 600;
-  border-radius: 5px;
-}
+    .tabs {
+      display: flex;
+      gap: 1rem;
+    }
 
-nav button:hover {
-  background-color: #64ffda;
-  color: #0a192f;
-}
+    .tab {
+      color: #f1f5f9;
+      background-color: transparent;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+    }
 
-nav button.active {
-  background-color: #64ffda;
-  color: #0a192f;
-}
+    .tab:hover,
+    .tab.active {
+      background-color: #334155;
+      border-radius: 5px;
+    }
 
-section {
-  padding: 4rem 2rem;
-  display: none;
-  flex-grow: 1;
-}
+    .content-section {
+      display: none;
+      padding: 2rem;
+    }
 
-section.active {
-  display: block;
-  animation: fadeIn 0.5s ease;
-}
+    .content-section.active {
+      display: block;
+    }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+    .hero {
+      text-align: center;
+      margin-top: 2rem;
+    }
 
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-}
+    .profile-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 1rem;
+      border: 3px solid #64748b;
+    }
 
-.typing {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #64ffda;
-  margin-bottom: 1.5rem;
-  overflow: hidden;
-  white-space: nowrap;
-  display: inline-block;
-  max-width: 100%;
-}
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-.typing.animate {
-  animation: typing 2s steps(30, end);
-}
+    .typing-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1.5rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 1rem;
+    }
 
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
+    .typing-line {
+      color: #38bdf8;
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      font-weight: bold;
+      white-space: pre-wrap;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeInUp 0.4s ease forwards;
+      margin-bottom: 0.75rem;
+    }
 
-.btn {
-  margin-top: 1rem;
-  display: inline-block;
-  border: 2px solid #64ffda;
-  color: #64ffda;
-  padding: 0.75rem 1.5rem;
-  text-decoration: none;
-  transition: all 0.3s ease-in-out;
-  position: relative;
-  overflow: hidden;
-  border-radius: 5px;
-  font-weight: 600;
-}
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-.btn::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #64ffda;
-  z-index: 0;
-  transition: transform 0.3s ease-in-out;
-  transform: scaleX(0);
-  transform-origin: left;
-}
+    .contact-links {
+      margin-top: 1rem;
+    }
 
-.btn:hover::before {
-  transform: scaleX(1);
-}
+    .contact-links a {
+      margin-right: 1rem;
+      display: inline-block;
+    }
 
-.btn span {
-  position: relative;
-  z-index: 1;
-  color: #64ffda;
-}
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
 
-.btn:hover span {
-  color: #0a192f;
-}
+      .tabs {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
 
-.contact-links a {
-  display: block;
-  margin: 1rem 0;
-  font-size: 1.1rem;
-  color: #64ffda;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  padding: 0.5rem 0;
-}
-
-.contact-links a:hover {
-  color: #8892b0;
-}
-
-.project-grid {
-  display: grid;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.project-card {
-  background-color: #112240;
-  padding: 1.5rem;
-  border-radius: 5px;
-  transition: transform 0.3s ease;
-  border: 1px solid #1f2d4a;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  border-color: #64ffda;
-}
-
-.project-card h3 {
-  color: #64ffda;
-  margin-bottom: 0.5rem;
-}
-
-.project-card p {
-  margin-bottom: 1rem;
-}
-
-.project-card .tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
-
-.project-card .tech span {
-  background-color: #1f2d4a;
-  color: #64ffda;
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-}
-
-footer {
-  background-color: #112240;
-  padding: 1rem;
-  text-align: center;
-  margin-top: auto;
-}
-
-/* Profile Section */
-.profile-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-}
-
-.profile-photo {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #64ffda;
-  box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
-}
-
-.profile-content {
-  flex: 1;
-}
-
-/* Responsive Layouts */
-@media (min-width: 768px) {
-  nav {
-    justify-content: flex-start;
-  }
-
-  .profile-section {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .project-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .project-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* 📱 Mobile-Friendly Enhancements */
-@media (max-width: 768px) {
-  body {
-    padding: 0 1rem;
-  }
-
-  nav {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-
-  nav button {
-    padding: 0.5rem 1rem;
-    margin: 0.3rem;
-    font-size: 0.9rem;
-  }
-
-  .typing {
-    font-size: 1.4rem;
-  }
-
-  .profile-section {
-    flex-direction: column;
-    text-align: center;
-    gap: 1.5rem;
-  }
-
-  .profile-photo {
-    width: 140px;
-    height: 140px;
-  }
-
-  .profile-content {
-    padding: 0 0.5rem;
-  }
-
-  .project-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-links a {
-    font-size: 1rem;
-    word-break: break-word;
-  }
-
-  .btn {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .typing {
-    font-size: 1.1rem;
-  }
-
-  nav button {
-    font-size: 0.8rem;
-    padding: 0.4rem 0.8rem;
-  }
-
-  .profile-photo {
-    width: 120px;
-    height: 120px;
-  }
-}
+      .typing-line {
+        font-size: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <nav>
-    <button onclick="showTab('home')" class="active">Home</button>
-    <button onclick="showTab('about')">About</button>
-    <button onclick="showTab('projects')">Projects</button>
-    <button onclick="showTab('goals')">Goals</button>
-    <button onclick="showTab('contact')">Contact</button>
-  </nav>
+  <header>
+    <h1>Kishore M Madhu</h1>
+    <nav class="tabs">
+      <button class="tab active" data-tab="home">Home</button>
+      <button class="tab" data-tab="about">About</button>
+      <button class="tab" data-tab="resume">Resume</button>
+      <button class="tab" data-tab="goals">Goals</button>
+      <button class="tab" data-tab="contact">Contact</button>
+    </nav>
+  </header>
 
-  <!-- Home Section -->
-  <section id="home" class="active">
-    <div class="container">
-      <div class="typing animate">Welcome to My Portfolio</div>
-      <div class="profile-section">
-        <img src="59158.jpg" alt="Kishore M Madhu" class="profile-photo">
-        <div class="profile-content">
-          <p>Hello! I'm Kishore, a passionate tech enthusiast specializing in Data Analytics and Digital Marketing.</p>
-          <p>Currently pursuing my Integrated MCA, I'm focused on building practical skills through projects and continuous learning.</p>
-          <a href="#" class="btn" onclick="showTab('projects'); return false;"><span>View My Work</span></a>
-        </div>
+  <section id="home" class="content-section active">
+    <div class="hero">
+      <div class="profile-photo">
+        <img src="Screenshot_20250720-133152.Google.png" alt="Profile Photo" />
+      </div>
+      <h2>Hello, I'm Kishore</h2>
+      <div class="typing-container" id="typing-container">
+        <!-- Typing lines will appear here -->
       </div>
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about">
-    <div class="container">
-      <div class="typing">About Me</div>
-      <p>I'm a first-year Integrated MCA student at De Paul Institute of Science & Technology (DIST), affiliated with MG University.</p>
-      <p>My primary interests lie in Data Analytics and Digital Marketing, where I'm actively building hands-on experience through:</p>
-      <ul style="margin: 1rem 0 1rem 2rem;">
-        <li>Certified courses and online learning</li>
-        <li>Real-world projects and case studies</li>
-        <li>Continuous self-improvement</li>
-      </ul>
-      <p>My goal is to become a versatile tech professional capable of solving real-world problems through data-driven insights and strategic marketing.</p>
-    </div>
+  <section id="about" class="content-section">
+    <h2>About Me</h2>
+    <p>
+      I'm a passionate and curious learner currently pursuing my 1st year in Integrated MCA at De Paul Institute of Science & Technology (DIST), affiliated with MG University. My main interests lie in <strong>Data Analytics</strong> and <strong>Digital Marketing</strong>, where I'm actively building hands-on experience through certified courses, real-world projects, and constant self-learning.<br>
+      My aim is to become a <strong>versatile tech professional</strong> capable of solving real-world problems using a mix of analytical thinking, technical tools, and strategic creativity. I'm especially focused on gaining freelance experience, contributing to open-source, and building a strong professional presence on LinkedIn and GitHub.<br>
+      <strong>Currently Learning:</strong><br>
+      Python, SQL, Power BI, Excel, Tableau, AI & ML with Scikit-learn, TensorFlow, and PyTorch (Beginner)<br>
+      Digital Marketing (SEO, Google Analytics, Meta Ads, Canva)<br>
+      Tools: GitHub, VS Code, LinkedIn Networking<br>
+    </p>
   </section>
 
-  <!-- Projects Section -->
-  <section id="projects">
-    <div class="container">
-      <div class="typing">My Projects</div>
-      <div class="project-grid">
-        <div class="project-card">
-          <h3>Sales Analytics Dashboard</h3>
-          <p>Interactive Power BI dashboard analyzing sales trends and customer behavior patterns.</p>
-          <div class="tech">
-            <span>Power BI</span>
-            <span>Excel</span>
-            <span>Data Visualization</span>
-          </div>
-        </div>
-        <div class="project-card">
-          <h3>Movie Recommendation System</h3>
-          <p>Basic recommendation engine using Python and collaborative filtering techniques.</p>
-          <div class="tech">
-            <span>Python</span>
-            <span>Pandas</span>
-            <span>Machine Learning</span>
-          </div>
-        </div>
-        <div class="project-card">
-          <h3>E-commerce SEO Strategy</h3>
-          <p>Comprehensive SEO plan with keyword research and content optimization.</p>
-          <div class="tech">
-            <span>SEO</span>
-            <span>Google Analytics</span>
-            <span>Content Strategy</span>
-          </div>
-        </div>
-      </div>
-    </div>
+  <section id="resume" class="content-section">
+    <h2>Resume</h2>
+    <p>
+      You can view/download my resume here:
+      <a href="https://drive.google.com/file/d/1sp6sAbLSDox0WrK0UeSgfgKoa9Q0smHR/view?usp=sharing" target="_blank">Google Drive Resume</a>
+    </p>
   </section>
 
-  <!-- Goals Section -->
-  <section id="goals">
-    <div class="container">
-      <div class="typing">My Goals</div>
-      <p>👨‍🎓 Currently pursuing an integrated MCA with a strong interest in Data Analytics and Machine Learning.</p>
-      <p>💡 Building foundational skills in AI, ML, digital marketing, and cybersecurity to become a versatile tech professional.</p>
-      <p>🎯 Long-term goal: contribute to real-world AI applications in business, education, and sustainability.</p>
-      <div style="margin-top: 2rem;">
-        <h3 style="color: #64ffda; margin-bottom: 1rem;">Current Focus Areas:</h3>
-        <ul style="margin-left: 2rem;">
-          <li>Mastering Python for data analysis</li>
-          <li>Learning Power BI and Tableau</li>
-          <li>Understanding AI/ML fundamentals</li>
-          <li>Developing digital marketing strategies</li>
-        </ul>
-      </div>
-    </div>
+  <section id="goals" class="content-section">
+    <h2>My Goals</h2>
+    <ul>
+      <li>Master Data Analytics and Digital Marketing</li>
+      <li>Get certified in AI & ML</li>
+      <li>Build real-world applications and contribute to open-source</li>
+      <li>Land a job in top tech company or freelance with strong portfolio</li>
+    </ul>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <div class="container">
-      <div class="typing">Get in Touch</div>
-      <div class="contact-links">
-        <a href="mailto:kishoremmadhu@gmail.com">
-          <i class="fas fa-envelope"></i> Email: kishoremmadhu@gmail.com
-        </a>
-        <a href="https://linkedin.com/in/kishore-m-madhu-975832373" target="_blank">
-          <i class="fab fa-linkedin"></i> LinkedIn Profile
-        </a>
-        <a href="https://github.com/kishoremmadhu" target="_blank">
-          <i class="fab fa-github"></i> GitHub Projects
-        </a>
-        <a href="https://drive.google.com/file/d/1sp6sAbLSDox0WrK0UeSgfgKoa9Q0smHR/view?usp=sharing" target="_blank">
-          <i class="fas fa-file-alt"></i> View My Resume
-        </a>
-      </div>
+  <section id="contact" class="content-section">
+    <h2>Contact</h2>
+    <p>You can reach me through:</p>
+    <div class="contact-links">
+      <a href="mailto:kishoremmadhu@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/kishore-m-madhu-975832373?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">LinkedIn</a>
+      <a href="https://github.com/kishoremmadhu" target="_blank">GitHub</a>
     </div>
   </section>
-
-  <footer>
-    <p>&copy; 2025 Kishore M Madhu. All rights reserved.</p>
-  </footer>
 
   <script>
-    // Tab functionality
-    function showTab(id) {
-      // Hide all sections
-      document.querySelectorAll('section').forEach(sec => {
-        sec.classList.remove('active');
+    // Tabs
+    const tabs = document.querySelectorAll(".tab");
+    const sections = document.querySelectorAll(".content-section");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach((btn) => btn.classList.remove("active"));
+        tab.classList.add("active");
+
+        const target = tab.getAttribute("data-tab");
+        sections.forEach((section) => {
+          section.classList.remove("active");
+          if (section.id === target) {
+            section.classList.add("active");
+          }
+        });
       });
-      
-      // Show selected section
-      document.getElementById(id).classList.add('active');
-      
-      // Update active nav button
-      document.querySelectorAll('nav button').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      document.querySelector(`nav button[onclick="showTab('${id}')"]`).classList.add('active');
-      
-      // Trigger typing animation for the section heading
-      const heading = document.querySelector(`#${id} .typing`);
-      if (heading) {
-        heading.classList.add('animate');
-        // Reset animation by briefly removing and re-adding the class
-        setTimeout(() => {
-          heading.classList.remove('animate');
-          setTimeout(() => heading.classList.add('animate'), 10);
-        }, 10);
+    });
+
+    // Typing Animation
+    const lines = [
+      "1st Year Integrated MCA Student",
+      "Aspiring AI & ML Engineer",
+      "Budding Data Analyst & Digital Marketer",
+      "Project-Oriented Learner",
+      "Freelancing Enthusiast"
+    ];
+
+    const container = document.getElementById("typing-container");
+    let lineIndex = 0;
+
+    function typeLine() {
+      if (lineIndex < lines.length) {
+        const div = document.createElement("div");
+        div.classList.add("typing-line");
+        container.appendChild(div);
+
+        let charIndex = 0;
+        const line = lines[lineIndex];
+
+        function typeChar() {
+          if (charIndex < line.length) {
+            div.textContent += line.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeChar, 50);
+          } else {
+            lineIndex++;
+            setTimeout(typeLine, 400);
+          }
+        }
+
+        typeChar();
       }
-      
-      // Update URL hash
-      window.location.hash = id;
-      
-      // Scroll to top of the section
-      window.scrollTo(0, 0);
     }
-    
-    // Check URL hash on page load
-    window.addEventListener('load', () => {
-      if (window.location.hash) {
-        const tabId = window.location.hash.substring(1);
-        showTab(tabId);
-      } else {
-        // Default to home tab
-        showTab('home');
-      }
-    });
-    
-    // Handle back/forward navigation
-    window.addEventListener('hashchange', () => {
-      const tabId = window.location.hash.substring(1);
-      showTab(tabId);
-    });
+
+    window.addEventListener("DOMContentLoaded", typeLine);
   </script>
 </body>
 </html>
